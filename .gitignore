@@ -1,0 +1,17 @@
+stable-diffusion-v1-4
+stable-diffusion-v1-5
+**/*.pyc
+**/__pycache__
+log*.txt
+_debug*
+.env
+_sc.py
+*.ckpt
+.idea
+.idea/workspace.xml
+.DS_Store
+.vscode
+*/__pycache__git
+.iml
+test_dataset
+checkpoints/
