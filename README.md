@@ -50,7 +50,7 @@ coming soon~
 
 - [x] training code
 - [x] evaluation code
-- [ ] release training dataset
+- [x] release training dataset
 - [ ] release trained checkpoints
 
 ## Acknowledgements

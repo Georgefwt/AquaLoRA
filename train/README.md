@@ -24,12 +24,12 @@ After completing the training, you can choose an appropriate checkpoint and rena
 
 ### Prior Preserving Fine-tuning
 
-To perform Prior Preserving Fine-Tuning (PPFT), you first need to download the dataset from here (we are currently preparing this dataset, it will be available soon). Then, execute the following command to start the training:
+To perform Prior Preserving Fine-Tuning (PPFT), you first need to download the dataset from [here](https://huggingface.co/datasets/georgefen/Gustavosta-sample) and extract data from compressed file. Then, execute the following command to start the training:
 
 
 ```bash
 export MODEL_NAME="runwayml/stable-diffusion-v1-5"
-export TRAIN_DIR="<dataset will be provide later>"
+export TRAIN_DIR="Gustavosta-sample"
 
 accelerate launch --mixed_precision="fp16" ppft_train.py \
   --pretrained_model_name_or_path=$MODEL_NAME \
