@@ -44,14 +44,18 @@ python merge_lora.py --sd_model <customized model safetensors> --models watermar
 
 ### Trained Models
 
-coming soon~
+| Stage                        | Link                                                         |
+| ---------------------------- | ------------------------------------------------------------ |
+| Pretrained Latent Watermark  | [huggingface.co/georgefen/AquaLoRA-Models/tree/main/pretrained_latent_watermark](https://huggingface.co/georgefen/AquaLoRA-Models/tree/main/pretrained_latent_watermark) |
+| Prior-preserving  Fine-tuned | [huggingface.co/georgefen/AquaLoRA-Models/tree/main/ppft_trained](https://huggingface.co/georgefen/AquaLoRA-Models/tree/main/ppft_trained) |
+| Robustness Enhanced (opt.)   | [huggingface.co/georgefen/AquaLoRA-Models/tree/main/rob_finetuned](https://huggingface.co/georgefen/AquaLoRA-Models/tree/main/rob_finetuned) |
 
 ### TODOs
 
 - [x] training code
 - [x] evaluation code
 - [x] release training dataset
-- [ ] release trained checkpoints
+- [x] release trained checkpoints
 
 ## Acknowledgements
 
