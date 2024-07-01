@@ -6,7 +6,7 @@ from safetensors.torch import load_file
 import os
 from utils.models import MapperNet
 
-def create_watermark_lora(train_folder, scale, msg_bits=48, hidinfo=None):
+def create_watermark_lora(train_folder, scale, msg_bits=48, hidinfo=None, save=True):
     lora_state_dict = load_file(f"{train_folder}/pytorch_lora_weights.safetensors",device='cpu')
 
     if hidinfo is None:
@@ -42,12 +42,13 @@ def create_watermark_lora(train_folder, scale, msg_bits=48, hidinfo=None):
 
     hidinfo = ''.join(map(str, hidinfo.tolist()[0]))
 
-    # safetensor save c_lora_state_dict
-    if not os.path.exists(f"{train_folder}/{hidinfo}"):
-        os.makedirs(f"{train_folder}/{hidinfo}")
-    safetensors.torch.save_file(c_lora_state_dict, f"{train_folder}/{hidinfo}/pytorch_lora_weights.safetensors")
+    # save c_lora_state_dict
+    if save:
+        if not os.path.exists(f"{train_folder}/{hidinfo}"):
+            os.makedirs(f"{train_folder}/{hidinfo}")
+        safetensors.torch.save_file(c_lora_state_dict, f"{train_folder}/{hidinfo}/pytorch_lora_weights.safetensors")
 
-    return hidinfo
+    return hidinfo, c_lora_state_dict
 
 if __name__ == "__main__":
     import argparse
@@ -58,5 +59,5 @@ if __name__ == "__main__":
     parser.add_argument("--hidinfo", type=str, default=None, help="your secret message, if None, it will be randomly generated")
     args = parser.parse_args()
 
-    hidinfo = create_watermark_lora(args.train_folder, args.scale, args.msg_bits, args.hidinfo)
+    hidinfo, _ = create_watermark_lora(args.train_folder, args.scale, args.msg_bits, args.hidinfo)
     print(hidinfo)

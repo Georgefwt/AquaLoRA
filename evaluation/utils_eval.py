@@ -48,6 +48,7 @@ def simple_sample(
         num_inference_steps: Union[int, List[int]] = 50,
         guidance_scale: Union[float, List[float]] = 7.5,
         batch_size: int = 1,
+        save: bool = True
 ):
     if negative_prompt is not None:
         assert len(negative_prompt) == len(prompt)
@@ -117,11 +118,13 @@ def simple_sample(
                 guidance_scale=guidance_scale[i],
                 generator = generator[i*batch_size:(i+1)*batch_size]
                 ).images
-        for j,img in enumerate(images):
-            if isinstance(output_dir, list):
-                img.save(f"{output_dir[i]}")
-            else:
-                img.save(f"{output_dir}/{seed[i]}_{j}.png")
+        if save:
+            for j,img in enumerate(images):
+                if isinstance(output_dir, list):
+                    img.save(f"{output_dir[i]}")
+                else:
+                    img.save(f"{output_dir}/{seed[i]}_{j}.png")
+    return images
 
 # --------------------------------------------------------------------------
 
@@ -179,8 +182,10 @@ def simple_decode(
     accuracy = []
     TP = 0
     FN = 0
-    for img_path in tqdm(img_paths):
-        image = Image.open(img_path)
+    for image in tqdm(img_paths):
+        # if image is not pil
+        if not isinstance(image, Image.Image):
+            image = Image.open(image)
         image = process(image)
         image = image.cuda()
         image = image.unsqueeze(0)

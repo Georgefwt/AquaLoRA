@@ -4,13 +4,13 @@
 
 This repository hosts the official PyTorch implementation of the paper: ["**AquaLoRA: Toward White-box Protection for Customized Stable Diffusion Models via Watermark LoRA**"](https://arxiv.org/abs/2405.11135) (Accepted by ICML 2024).
 
-## Method
+## 🔍Method
 
 ![method](fig/teaser.png)
 
 We introduce AquaLoRA, the first implementation addressing white-box protection. Our approach integrates watermark information directly into the U-Net of SD models using a watermark LoRA module in a two-stage process. This module includes a scaling matrix, enabling flexible message updates without retraining. To maintain image fidelity, we design Prior Preserving Fine-Tuning to ensure watermark integration with small impact on the distribution. Our extensive experiments and ablation studies validate the effectiveness of our design.
 
-## Getting Started
+## 🚀Getting Started
 
 ### Prerequisites
 
@@ -50,14 +50,18 @@ python merge_lora.py --sd_model <customized model safetensors> --models watermar
 | Prior-preserving  Fine-tuned | [huggingface.co/georgefen/AquaLoRA-Models/tree/main/ppft_trained](https://huggingface.co/georgefen/AquaLoRA-Models/tree/main/ppft_trained) |
 | Robustness Enhanced (opt.)   | [huggingface.co/georgefen/AquaLoRA-Models/tree/main/rob_finetuned](https://huggingface.co/georgefen/AquaLoRA-Models/tree/main/rob_finetuned) |
 
-### TODOs
+## 📝TODOs
 
 - [x] training code
 - [x] evaluation code
 - [x] release training dataset
 - [x] release trained checkpoints
 
-## Acknowledgements
+## 🖥️Run Gradio Demo
+
+Download [AquaLoRA-Models](huggingface.co/georgefen/AquaLoRA-Models) from Hugging Face to the project's main directory, then run the Gradio demo by executing `python run_gradio_demo.py`.
+
+## 🙏Acknowledgements
 
 This code builds on the code from the [diffusers](https://github.com/huggingface/diffusers) library. In addition, we borrow code from the following repositories:
 
@@ -65,7 +69,7 @@ This code builds on the code from the [diffusers](https://github.com/huggingface
 - [dreamsim](https://github.com/ssundaram21/dreamsim) for calculate dreamsim metric.
 - [pytorch-fid](https://github.com/mseitzer/pytorch-fid) for calculate FID metric.
 
-## Citation
+## 📄Citation
 
 If you use this code for your research, please cite the following work:
 
