@@ -779,7 +779,6 @@ def main(args):
     optimizer = optimizer_class(
         [
             {"params": params_to_optimize, "lr": args.learning_rate},
-            {"params": msgdecoder.parameters(), "lr": args.learning_rate},
             {"params": mapper.parameters(), "lr": args.learning_rate},
         ],
         betas=(args.adam_beta1, args.adam_beta2),
